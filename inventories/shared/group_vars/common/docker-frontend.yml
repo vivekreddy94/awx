@@ -1,0 +1,3 @@
+docker_frontend_image: konradkleine/docker-registry-frontend:v2
+docker_frontend_home: /home/vivek/docker-frontend
+frontend_local_https: 3105
