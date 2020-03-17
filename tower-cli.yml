@@ -1,0 +1,7 @@
+- hosts: common
+  become: yes
+  become_method: sudo
+  become_user: root
+  tasks:
+    - name: Run a shell command
+      shell: ls -l
