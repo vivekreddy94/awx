@@ -7,7 +7,7 @@
       shell: ls -l 
     - name: pause playbook
       pause:
-        minutes: 5
+        minutes: 1
     - name: Run a shell command
       shell: ls -l /home/vivek
 

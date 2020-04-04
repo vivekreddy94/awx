@@ -1,0 +1,41 @@
+- name: Create docker home
+  file: 
+    path: "{{ jenkins_docker_home }}"
+    state: directory
+
+- name: Create Jenkins home
+  file:
+    path: "{{ jenkins_home_dir}}"
+    state: directory
+
+- name: Copy Docker file to docker home
+  copy: 
+    src: Dockerfile
+    dest: "{{ jenkins_docker_home }}/Dockerfile"
+    mode: 0640
+
+- name: Copy docker file to docker home
+  template:
+    src: docker-compose.yml.j2
+    dest: "{{ jenkins_docker_home }}/docker-compose.yml"
+    mode: 0640
+
+- name: Copy plugins and jenkins config files
+  copy: 
+    src: "{{ item }}"
+    dest: "{{ jenkins_docker_home }}/{{ item }}"
+    mode: 0640
+  with_items:
+    - plugins.txt
+    - jenkins.yaml
+
+- name: Stop docker container
+  docker_compose:
+    project_src: "{{ jenkins_docker_home }}"
+    state: absent
+
+- name: start docker container
+  docker_compose:
+    project_src: "{{ jenkins_docker_home }}"
+    state: present
+

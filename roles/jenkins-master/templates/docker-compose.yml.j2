@@ -1,0 +1,11 @@
+version: '3.3'
+services:
+  jenkins:
+    build:
+      context: .
+    ports:
+      - {{ jenkins_port }}:8080
+    volumes:
+      - {{ jenkins_home_dir }}:/var/jenkins_home
+      - ./jenkins.yaml:/var/jenkins_home/jenkins.yaml
+      - /etc/sssd/sssd.conf:/etc/sssd/sssd.conf:ro
