@@ -1,9 +1,8 @@
 [Group1]
-10.0.0.4
+localhost
 
 [common]
-10.0.0.4
-10.0.0.7
+localhost
 
 [jenkins-master]
-10.0.0.4
+localhost
